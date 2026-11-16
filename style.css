@@ -1,5 +1,5 @@
 :root{
-  --stone:#A49250; --stone-deep:#8F7F43; --pine:#452928; --sage:#74362D; --muted:#452928; --burg:#74362D;
+  --stone:#F1ECE2; --stone-deep:#DDD5C5; --pine:#452928; --sage:#74362D; --muted:#452928; --burg:#74362D;
   --serif:'Instrument Serif', Georgia, serif;
   --sans:'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -69,9 +69,11 @@ footer .wrap{ display:flex; justify-content:space-between; gap:1rem; flex-wrap:w
 }
 
 .mark{ display:block; line-height:0; }
-.mark img{ height:64px; width:auto; display:block; }
-@media (max-width:820px){ .mark img{ height:48px; } }
+.mark img{ height:96px; width:auto; display:block; }
+@media (max-width:820px){ .mark img{ height:64px; } }
 
 h1, h2, .closer p, .offer dt{ color:var(--pine); }
 
 img.shot{ display:block; width:100%; height:auto; object-fit:cover; }
+
+a:hover, nav a[aria-current]{ color:var(--burg); }
