@@ -4,25 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studio Civette | Berlin</title>
-<meta name="description" content="Studio Civette is a Berlin food studio specialised in creating memorable events. Brand launches, PR Events, Set catering">
+<meta name="description" content="Studio Civette is a Berlin food studio specialised in creating memorable events. Brand launches, PR events, set catering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#E7E2D1;   /* page background */
+    --olive:#3F3D08;   /* dark bands */
+    --ink:#17160D;     /* text on cream */
+    --serif:'Instrument Serif', Georgia, serif;
+    --sans:'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+  body{ background:var(--cream); color:var(--ink); font-family:var(--sans); font-weight:300; line-height:1.3; text-transform:uppercase; -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; text-decoration:none; }
+  a:focus-visible{ outline:2px solid currentColor; outline-offset:4px; }
+  .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .spread{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.3rem 1rem; font-family:var(--serif); font-weight:400; font-size:clamp(1.05rem, 2.2vw, 1.9rem); line-height:1.1; }
+
+  /* Nav */
+  .top{ position:sticky; top:0; z-index:20; background:var(--cream); }
+  .top .bar{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:1rem 2vw; font-size:0.9rem; }
+  .top .left{ display:flex; gap:clamp(1rem, 6vw, 5rem); }
+  .top .right{ text-align:right; }
+  .top a:hover{ text-decoration:underline; text-underline-offset:5px; }
+  .top .icon{ display:block; width:clamp(54px, 7vw, 84px); }
+  .top .icon img{ display:block; width:100%; height:auto; }
+
+  /* Hero */
+  .hero{ position:relative; padding:2vw 2vw 0; }
+  .hero .photo{ position:absolute; left:50%; top:2vw; transform:translateX(-50%); width:clamp(95px, 16vw, 230px); aspect-ratio:3/4; object-fit:cover; display:block; }
+  .hero .logo{ position:relative; display:block; width:min(82vw, 1100px); height:auto; margin:9vw auto 0; }
+  .hero .spread{ margin-top:3vw; padding:0 0 1.6rem; }
+
+  /* About */
+  .band{ background:var(--olive); color:var(--cream); }
+  .about{ padding:clamp(1.2rem, 4vw, 3rem) 2vw 0; }
+  .card{ background:var(--cream); color:var(--ink); max-width:min(80vw, 1000px); margin:0 auto; padding:clamp(1.5rem, 4vw, 3rem) clamp(1.2rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem); }
+  .card .spread{ font-size:clamp(1.05rem, 2.4vw, 2rem); }
+  .portrait{ display:block; width:clamp(90px, 14vw, 150px); aspect-ratio:3/4; object-fit:cover; margin:clamp(2rem, 5vw, 4rem) auto; background:#CFC9B2; }
+  .card p{ text-align:center; font-size:clamp(0.85rem, 1.5vw, 1.1rem); max-width:44em; margin:0 auto; }
+  .tags{ padding:1.6rem 2vw 1.8rem; }
+  .tags .spread{ max-width:1000px; margin:0 auto; font-size:clamp(1.05rem, 2.2vw, 1.9rem); }
+
+  /* Work */
+  .work{ padding:clamp(2.5rem, 6vw, 5rem) 0 0; }
+  .work h2, .contact h2{ font-family:var(--serif); font-weight:400; text-align:center; font-size:clamp(2rem, 4.5vw, 3.6rem); line-height:1; }
+  .grid{ margin-top:clamp(2rem, 6vw, 5rem); display:grid; grid-template-columns:repeat(4, 1fr); gap:11px; }
+  .grid figure{ display:flex; flex-direction:column; justify-content:flex-end; }
+  .grid figcaption{ order:-1; text-align:center; font-size:clamp(0.7rem, 1vw, 0.85rem); padding:0 0.5rem 0.7rem; min-height:3.2em; display:flex; align-items:flex-end; justify-content:center; }
+  .grid img{ display:block; width:100%; aspect-ratio:3/4; object-fit:cover; }
+
+  /* Contact */
+  .contact{ margin-top:clamp(2.5rem, 6vw, 5rem); padding:clamp(4rem, 9vw, 8rem) 2vw; text-align:center; }
+  .contact .note{ margin-top:1.8rem; font-size:0.85rem; opacity:0.85; }
+  .contact .lines{ margin-top:1rem; font-size:clamp(1.1rem, 2.4vw, 1.9rem); }
+  .contact .lines a{ display:block; }
+  .contact .lines a:hover{ text-decoration:underline; text-underline-offset:6px; }
+  .contact .base{ margin-top:4rem; font-size:0.75rem; opacity:0.7; }
+
+  @media (max-width:760px){
+    .grid{ grid-template-columns:repeat(2, 1fr); row-gap:1.4rem; }
+    .card{ max-width:100%; }
+    .top .bar{ font-size:0.78rem; }
+    .hero .logo{ width:94vw; margin-top:16vw; }
+    .hero .photo{ width:28vw; }
+  }
+</style>
 </head>
 <body>
-<header><div class="wrap"><a class="mark" href="index.html"><img src="images/double civette logo.png" alt="Studio Civette" width="141" height="64"></a><nav><a href="index.html" aria-current="page">Home</a><a href="work.html">Work</a><a href="studio.html">Studio</a><a href="contact.html">Contact</a></nav></div></header>
-<main>
-<section class="hero wrap">
-<h1>Curated menus, for all occasions.</h1>
-<p class="lede">Studio Civette is a Berlin food studio specialised in creating memorable events. Brand launches, PR Events, Set catering.</p>
+
+<nav class="top" aria-label="Main">
+  <div class="bar">
+    <div class="left"><a href="#about">About</a><a href="#work">Previous work</a></div>
+    <a class="icon" href="#top" aria-label="Back to top"><img src="images/civet-icon.png" alt="Studio Civette"></a>
+    <div class="right"><a href="#contact">Contact</a></div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <h1 class="sr-only">Studio Civette, Berlin</h1>
+  <img class="photo" src="images/CCV1 cockles.JPG" alt="Cockles served at Chez Civette Vol. 1">
+  <img class="logo" src="images/double civette logo.png" alt="Civette">
+  <div class="spread"><span>A</span><span>Berlin</span><span>Food</span><span>Studio</span></div>
+</header>
+
+<section class="band" id="about">
+  <div class="about">
+    <div class="card">
+      <div class="spread"><span>Curated</span><span>Menus</span><span>For</span><span>All</span><span>Occasions.</span></div>
+      <!-- PORTRAIT: add your photo as images/chef.jpg, then replace this div with:
+           <img class="portrait" src="images/chef.jpg" alt="The chef at work"> -->
+      <div class="portrait" role="img" aria-label="Portrait of the chef, coming soon"></div>
+      <p>Studio Civette is a Berlin food studio specialised in creating memorable events: brand launches, PR events and set catering. It was founded by a chef trained in Berlin’s fine dining kitchens, including Ernst, a Michelin-starred restaurant. We work independently of any restaurant, so every menu starts from your brief and not from a house style. Registered in Berlin and fully food-safety certified.</p>
+    </div>
+  </div>
+  <div class="tags"><div class="spread"><span>Brand launches</span><span>//</span><span>PR events</span><span>//</span><span>Set catering</span></div></div>
 </section>
-<section class="wrap"><div class="grid home"><figure><img class="shot" src="images/Canapes.jpg" alt="Canapes" loading="lazy"><figcaption>Canapes</figcaption></figure><figure><img class="shot" src="images/Catering_1.jpg" alt="Catering on set" loading="lazy"><figcaption>Catering on set</figcaption></figure><figure><img class="shot" src="images/Skewer.JPG" alt="Snacks at your event" loading="lazy"><figcaption>Skewer serving</figcaption></figure><figure><img class="shot" src="images/CCV1 cockles.JPG" alt="Chez Civette Vol. 1" loading="lazy"><figcaption>Chez Civette Volume 1</figcaption></figure></div></section>
-<section class="closer wrap">
-<p>Every menu starts with you.</p>
-<div class="links"><a href="work.html">See the work</a><a href="contact.html">Start an inquiry</a></div>
+
+<section class="work" id="work">
+  <h2>Work</h2>
+  <!-- To add a photo: copy one <figure> block, change src, alt and caption. -->
+  <div class="grid">
+    <figure><img src="images/Canapes.jpg" alt="Canapes" loading="lazy"><figcaption>Canapes</figcaption></figure>
+    <figure><img src="images/Catering_1.jpg" alt="Catering on set" loading="lazy"><figcaption>Catering on set</figcaption></figure>
+    <figure><img src="images/Skewer.JPG" alt="Snacks at your event" loading="lazy"><figcaption>Skewer serving</figcaption></figure>
+    <figure><img src="images/CCV1 cockles.JPG" alt="Chez Civette Vol. 1" loading="lazy"><figcaption>Chez Civette Volume 1</figcaption></figure>
+  </div>
 </section>
-</main>
-<footer><div class="wrap"><span>Studio Civette, Berlin</span><span>Menus composed on request</span></div></footer>
+
+<footer class="band contact" id="contact">
+  <h2>Contact</h2>
+  <p class="note">Every menu starts with you.</p>
+  <div class="lines">
+    <a href="mailto:hey@studiocivette.com">hey@studiocivette.com</a>
+    <a href="https://instagram.com/studiocivette" rel="noopener">@studiocivette</a>
+  </div>
+  <p class="base">Studio Civette, Berlin</p>
+</footer>
+
 </body>
 </html>
